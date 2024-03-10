@@ -1,6 +1,8 @@
 plugins {
     id("java-library")
     alias(libs.plugins.jetbrainsKotlinJvm)
+    alias(libs.plugins.jetbrainsKotlinKapt)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 java {
@@ -14,4 +16,6 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.rxJava)
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }
