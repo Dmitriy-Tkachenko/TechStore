@@ -12,6 +12,7 @@ java {
 
 dependencies {
     implementation(project(":data:products:api"))
+    implementation(project(":core:network"))
 
     implementation(libs.retrofit)
     implementation(libs.kotlinx.serialization.json)
