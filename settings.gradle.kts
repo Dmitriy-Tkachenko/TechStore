@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "TechStore"
 include(":app")
+include(":core:network")
