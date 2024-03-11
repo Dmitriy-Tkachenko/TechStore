@@ -11,6 +11,7 @@ java {
 }
 
 dependencies {
+    implementation(project(":module_injector"))
     implementation(project(":data:products:api"))
     implementation(project(":core:network"))
 

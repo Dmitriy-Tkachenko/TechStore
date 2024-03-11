@@ -20,6 +20,7 @@ retrofit-adapter-rxJava = "2.9.0"
 rxJava = "3.1.8"
 rxAndroid = "3.0.2"
 dagger = "2.48"
+leakcanary = "2.10"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +40,7 @@ rxJava = { module = "io.reactivex.rxjava3:rxjava", version.ref = "rxJava" }
 rxJava-rxAndroid = { module = "io.reactivex.rxjava3:rxandroid", version.ref = "rxAndroid" }
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
+leakcanary = { module="com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

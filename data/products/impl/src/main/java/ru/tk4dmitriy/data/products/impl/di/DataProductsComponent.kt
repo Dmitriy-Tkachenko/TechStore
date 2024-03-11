@@ -2,6 +2,8 @@ package ru.tk4dmitriy.data.products.impl.di
 
 import dagger.Component
 import ru.tk4dmitriy.core.network.NetworkModule
+import ru.tk4dmitriy.data.products.api.DataProductsApi
+import ru.tk4dmitriy.data.products.api.ProductsRepository
 import ru.tk4dmitriy.data.products.impl.network.ProductsNetwork
 import ru.tk4dmitriy.data.products.impl.network.api.ProductsApi
 
@@ -10,12 +12,14 @@ import ru.tk4dmitriy.data.products.impl.network.api.ProductsApi
     ProductsApiModule::class,
     ProductsNetworkModule::class
 ])
-interface DataProductsComponent {
-    fun getProductsApi(): ProductsApi
-    fun getProductsNetwork(): ProductsNetwork
+abstract class DataProductsComponent : DataProductsApi {
+    internal abstract fun getProductsApi(): ProductsApi
+    internal abstract fun getProductsNetwork(): ProductsNetwork
+    abstract override fun getProductsRepository(): ProductsRepository
 
-    @Component.Builder
-    interface Builder {
-        fun build(): DataProductsComponent
+    companion object {
+        fun initAndGet(): DataProductsApi {
+            return DaggerDataProductsComponent.builder().build()
+        }
     }
 }

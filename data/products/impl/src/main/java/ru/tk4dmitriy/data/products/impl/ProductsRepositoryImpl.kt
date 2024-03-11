@@ -6,7 +6,7 @@ import ru.tk4dmitriy.data.products.api.ProductsRepository
 import ru.tk4dmitriy.data.products.impl.network.ProductsNetwork
 import javax.inject.Inject
 
-class ProductsRepositoryImpl @Inject constructor(
+internal class ProductsRepositoryImpl @Inject constructor(
     private val productsNetwork: ProductsNetwork
 ) : ProductsRepository {
     override fun getProducts(): Single<List<Product>> =

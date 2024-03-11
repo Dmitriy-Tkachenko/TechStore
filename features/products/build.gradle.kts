@@ -1,23 +1,17 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.jetbrainsKotlinKapt)
 }
 
 android {
-    namespace = "ru.tk4dmitriy.techstore"
+    namespace = "ru.tk4dmitriy.features.products"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ru.tk4dmitriy.techstore"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
-    }
 
-    buildFeatures {
-        viewBinding = true
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -39,17 +33,16 @@ android {
 }
 
 dependencies {
-    implementation(project(":module_injector"))
     implementation(project(":data:products:api"))
-    implementation(project(":data:products:impl"))
-    implementation(project(":features:products"))
+    implementation(project(":core:ui"))
+    implementation(project(":module_injector"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
 
+    implementation(libs.rxJava)
+    implementation(libs.rxJava.rxAndroid)
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 }

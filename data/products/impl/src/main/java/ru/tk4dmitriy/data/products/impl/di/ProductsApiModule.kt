@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import ru.tk4dmitriy.data.products.impl.network.api.ProductsApi
 
 @Module
-class ProductsApiModule {
+internal class ProductsApiModule {
 
     @Provides
     fun provideProductsApi(retrofit: Retrofit): ProductsApi =
