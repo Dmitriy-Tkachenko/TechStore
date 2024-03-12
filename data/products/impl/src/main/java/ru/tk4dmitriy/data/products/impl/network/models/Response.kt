@@ -13,5 +13,6 @@ internal data class Product(
     @SerialName("id") val id: Int,
     @SerialName("title") val title: String?,
     @SerialName("description") val description: String?,
-    @SerialName("thumbnail") val thumbnail: String?
+    @SerialName("thumbnail") val thumbnail: String?,
+    @SerialName("price") val price: Int?
 )

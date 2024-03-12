@@ -4,8 +4,10 @@
     <dimen name="thumb_wh">60dp</dimen>
     <dimen name="title_w">0dp</dimen>
     <dimen name="desc_w">0dp</dimen>
+    <dimen name="price_w">0dp</dimen>
     <dimen name="title_size">20sp</dimen>
     <dimen name="desc_size">16sp</dimen>
+    <dimen name="price_size">18sp</dimen>
     <dimen name="title_margin_start">20dp</dimen>
     <dimen name="desc_margin_start">20dp</dimen>
 

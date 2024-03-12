@@ -1,6 +1,6 @@
 # Android приложение для отображения списка товаров
 ### Функционал:
-- Вывод списка товаров с отображением title, description и thumbnail
+- Вывод списка товаров с отображением title, description, thumbnail и price
 - Пагинация
 - Swipe to refresh
 - Обработка ошибок

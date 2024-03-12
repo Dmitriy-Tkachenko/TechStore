@@ -46,4 +46,16 @@
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="Description" />
 
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="@dimen/price_w"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/desc_margin_start"
+        android:textSize="@dimen/price_size"
+        android:textColor="@color/text_primary"
+        app:layout_constraintTop_toBottomOf="@id/desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="right"
+        tools:text="186 $" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,8 @@ data class ProductsState(
 
 data class ProductUi(
     val id: Int,
-    val title: String,
-    val description: String,
-    val thumbnails: String
+    val title: String?,
+    val description: String?,
+    val thumbnails: String?,
+    val price: Int?
 )

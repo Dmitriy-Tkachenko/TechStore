@@ -131,7 +131,8 @@ internal class ProductsViewModel @Inject constructor(
             id = it.id,
             title = it.title,
             description = it.description,
-            thumbnails = it.thumbnail
+            thumbnails = it.thumbnail,
+            price = it.price
         )
     }
 }
