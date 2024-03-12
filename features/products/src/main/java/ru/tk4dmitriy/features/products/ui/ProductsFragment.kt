@@ -1,13 +1,15 @@
 package ru.tk4dmitriy.features.products.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import ru.tk4dmitriy.features.products.R
@@ -32,6 +34,12 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         )[ProductsViewModel::class.java]
     }
 
+    private val refreshListener = SwipeRefreshLayout.OnRefreshListener {
+        viewModel.dispatchIntent(ProductsIntent.Refresh)
+        binding.swipeRefresh.isRefreshing = false
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         FeatureProductsComponentHolder.getComponent().inject(this)
@@ -53,11 +61,20 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         observeOnState()
+        observeOnEffect()
+
         if (savedInstanceState == null) viewModel.dispatchIntent(ProductsIntent.Init)
-        binding.rvProducts.addOnScrollListener(ProductsScrollListener {
-            viewModel.dispatchIntent(ProductsIntent.LoadMore)
-        })
+
+        binding.apply {
+            rvProducts.addOnScrollListener(ProductsScrollListener {
+                viewModel.dispatchIntent(ProductsIntent.LoadMore(
+                    skip = adapter.itemCount
+                ))
+            })
+            swipeRefresh.setOnRefreshListener(refreshListener)
+        }
     }
 
     override fun onDestroy() {
@@ -66,17 +83,59 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     }
 
     private fun observeOnState() {
-        val disposable = viewModel.state.observeOn(AndroidSchedulers.mainThread()).subscribe {
-            render(it)
-        }
+        val disposable = viewModel.state
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { render(it) }
+        compositeDisposable.add(disposable)
+    }
+
+    private fun observeOnEffect() {
+        val disposable = viewModel.effect
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe { effect(it) }
         compositeDisposable.add(disposable)
     }
 
     private fun render(state: ProductsState) {
-        if (state.loading) {
+        if (state.loading) stateLoadingViewsVisibility()
+        else if (state.loadingMore)
+        else if (state.message != null)
+            stateMessageViewsVisibility(message = resources.getString(state.message))
+        else {
+            stateDataViewsVisibility()
+            adapter.submitList(state.data)
+        }
+    }
 
-        } else if (state.error != null) {
+    private fun effect(effect: ProductsEffect) {
+        when(effect) {
+            is ProductsEffect.ShowToast ->
+                Toast.makeText(requireActivity(), effect.message, Toast.LENGTH_SHORT).show()
+        }
+    }
 
-        } else adapter.submitList(state.data)
+    private fun stateLoadingViewsVisibility() {
+        binding.apply {
+            rvProducts.visibility = View.GONE
+            tvMessage.visibility = View.GONE
+            shimmer.visibility = View.VISIBLE
+        }
+    }
+
+    private fun stateMessageViewsVisibility(message: String) {
+        binding.apply {
+            rvProducts.visibility = View.GONE
+            shimmer.visibility = View.GONE
+            tvMessage.visibility = View.VISIBLE
+            tvMessage.text = message
+        }
+    }
+
+    private fun stateDataViewsVisibility() {
+        binding.apply {
+            shimmer.visibility = View.GONE
+            tvMessage.visibility = View.GONE
+            rvProducts.visibility = View.VISIBLE
+        }
     }
 }

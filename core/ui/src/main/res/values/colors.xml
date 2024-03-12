@@ -4,5 +4,6 @@
     <color name="gray">#888d93</color>
 
     <color name="text_primary">@color/black</color>
-    <color name="text_secondary">@color/gray</color>
+
+    <color name="shimmer">@color/gray</color>
 </resources>

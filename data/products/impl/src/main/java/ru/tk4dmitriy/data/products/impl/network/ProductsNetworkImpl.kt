@@ -8,17 +8,8 @@ import javax.inject.Inject
 internal class ProductsNetworkImpl @Inject constructor(
     private val productsApi: ProductsApi
 ) : ProductsNetwork {
-    private val limit = 20
-    private var skip = 0
-    private var isFirstCall = true
-    override fun getProducts(): Single<Response> = productsApi.getProducts(
-        skip = getCurrentSkip(),
+    override fun getProducts(skip: Int, limit: Int): Single<Response> = productsApi.getProducts(
+        skip = skip,
         limit = limit
     )
-
-    private fun getCurrentSkip(): Int {
-        if (isFirstCall) isFirstCall = false
-        else skip += limit
-        return skip
-    }
 }

@@ -10,19 +10,24 @@
         android:id="@+id/thumb"
         android:layout_width="@dimen/thumb_wh"
         android:layout_height="@dimen/thumb_wh"
-        android:background="#000000"
+        android:background="@color/gray"
         android:theme="@style/ShapeAppearanceOverlay.App.CornerSize50per"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/title_w"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/title_margin_start"
         android:textSize="@dimen/title_size"
         android:textColor="@color/text_primary"
+        android:singleLine="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:scrollHorizontally="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
         app:layout_constraintBottom_toTopOf="@+id/desc"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/thumb"
@@ -31,17 +36,14 @@
 
     <TextView
         android:id="@+id/desc"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/desc_w"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="@dimen/desc_margin_start"
         android:textSize="@dimen/desc_size"
-        android:textColor="@color/text_secondary"
         app:layout_constraintBottom_toBottomOf="@id/thumb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/thumb"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="Description" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

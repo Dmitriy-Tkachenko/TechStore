@@ -2,12 +2,28 @@
 <resources>
     <!-- item_product -->
     <dimen name="thumb_wh">60dp</dimen>
+    <dimen name="title_w">0dp</dimen>
+    <dimen name="desc_w">0dp</dimen>
     <dimen name="title_size">20sp</dimen>
     <dimen name="desc_size">16sp</dimen>
+    <dimen name="title_margin_start">20dp</dimen>
+    <dimen name="desc_margin_start">20dp</dimen>
 
     <!-- ItemDecoration -->
     <dimen name="space_top">10dp</dimen>
     <dimen name="space_left">20dp</dimen>
     <dimen name="space_right">20dp</dimen>
     <dimen name="space_bottom">10dp</dimen>
+
+    <!-- merge_item_loading_products -->
+    <dimen name="cl_margin_top">10dp</dimen>
+    <dimen name="cl_margin_hor">20dp</dimen>
+    <dimen name="stub_title_margin_start">20dp</dimen>
+    <dimen name="stub_desc_margin_start">20dp</dimen>
+    <dimen name="stub_thumb_wh">60dp</dimen>
+    <dimen name="stub_title_h">24dp</dimen>
+    <dimen name="stub_title_w">0dp</dimen>
+    <dimen name="stub_desc_h">24dp</dimen>
+    <dimen name="stub_desc_w">0dp</dimen>
+
 </resources>

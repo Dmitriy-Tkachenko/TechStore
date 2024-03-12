@@ -9,8 +9,8 @@ import javax.inject.Inject
 internal class ProductsRepositoryImpl @Inject constructor(
     private val productsNetwork: ProductsNetwork
 ) : ProductsRepository {
-    override fun getProducts(): Single<List<Product>> =
-        productsNetwork.getProducts().map { resp ->
+    override fun getProducts(skip: Int, limit: Int): Single<List<Product>> =
+        productsNetwork.getProducts(skip = skip, limit = limit).map { resp ->
             resp.products.map {
                 Product(
                     id = it.id,

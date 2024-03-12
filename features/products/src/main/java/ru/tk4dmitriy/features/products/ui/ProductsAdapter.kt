@@ -24,6 +24,7 @@ class ProductsAdapter : ListAdapter<ProductUi, ProductsAdapter.ViewHolder>(DiffC
 
         fun bind (item: ProductUi) = with(itemBinding) {
             title.text = item.title
+            title.isSelected = true
             desc.text = item.description
             Glide.with(itemView.context)
                 .load(item.thumbnails)

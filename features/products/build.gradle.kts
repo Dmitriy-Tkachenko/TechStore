@@ -45,6 +45,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
 
+    implementation(libs.shimmer)
+    implementation(libs.swiperefreshlayout)
     implementation(libs.glide)
     implementation(libs.rxJava)
     implementation(libs.rxJava.rxAndroid)

@@ -1,5 +1,6 @@
 package ru.tk4dmitriy.features.products.ui.utils
 
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -21,8 +22,9 @@ class ProductsScrollListener(
         firstVisibleItemPosition: Int,
         totalItemCount: Int
     ) {
-        if (visibleItemCount + firstVisibleItemPosition >= totalItemCount) {
-            dispatchIntentLoadMore()
-        }
+        val remainingItemCount = totalItemCount - firstVisibleItemPosition - visibleItemCount
+        val triggerThreshold = 5
+
+        if (remainingItemCount <= triggerThreshold) dispatchIntentLoadMore()
     }
 }
