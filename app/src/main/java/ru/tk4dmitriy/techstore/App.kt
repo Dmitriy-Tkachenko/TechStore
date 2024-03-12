@@ -6,6 +6,6 @@ import ru.tk4dmitriy.techstore.di.DaggerAppComponent
 
 class App : Application() {
     val appComponent: AppComponent by lazy {
-        DaggerAppComponent.create()
+        DaggerAppComponent.builder().build()
     }
 }

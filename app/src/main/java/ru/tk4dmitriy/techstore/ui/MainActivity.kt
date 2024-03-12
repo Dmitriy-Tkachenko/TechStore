@@ -9,10 +9,12 @@ import ru.tk4dmitriy.features.products.api.FeatureProductsApi
 import ru.tk4dmitriy.features.products.ui.ProductsFragment
 import ru.tk4dmitriy.techstore.App
 import ru.tk4dmitriy.techstore.R
+import ru.tk4dmitriy.techstore.databinding.ActivityMainBinding
 import javax.inject.Inject
 import javax.inject.Provider
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
     @Inject
     lateinit var featureProductsApi: Provider<FeatureProductsApi>
@@ -20,7 +22,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)

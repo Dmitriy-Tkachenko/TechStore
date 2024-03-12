@@ -8,4 +8,9 @@ import javax.inject.Singleton
 @Singleton
 interface AppComponent {
     fun inject(mainActivity: MainActivity)
+
+    @Component.Builder
+    interface Builder {
+        fun build() : AppComponent
+    }
 }

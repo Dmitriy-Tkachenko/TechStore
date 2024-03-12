@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/thumb"
+        android:layout_width="@dimen/thumb_wh"
+        android:layout_height="@dimen/thumb_wh"
+        android:background="#000000"
+        android:theme="@style/ShapeAppearanceOverlay.App.CornerSize50per"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/text_primary"
+        app:layout_constraintBottom_toTopOf="@+id/desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/thumb"
+        app:layout_constraintTop_toTopOf="@+id/thumb"
+        tools:text="Title" />
+
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="@dimen/desc_size"
+        android:textColor="@color/text_secondary"
+        app:layout_constraintBottom_toBottomOf="@id/thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/thumb"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:text="Description" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

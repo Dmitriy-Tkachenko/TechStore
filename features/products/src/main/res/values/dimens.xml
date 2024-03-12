@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- item_product -->
+    <dimen name="thumb_wh">60dp</dimen>
+    <dimen name="title_size">20sp</dimen>
+    <dimen name="desc_size">16sp</dimen>
+
+    <!-- ItemDecoration -->
+    <dimen name="space_top">10dp</dimen>
+    <dimen name="space_left">20dp</dimen>
+    <dimen name="space_right">20dp</dimen>
+    <dimen name="space_bottom">10dp</dimen>
+</resources>

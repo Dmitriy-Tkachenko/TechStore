@@ -14,9 +14,9 @@ internal class ProductsRepositoryImpl @Inject constructor(
             resp.products.map {
                 Product(
                     id = it.id,
-                    title = it.title,
-                    description = it.description,
-                    thumbnail = it.thumbnail
+                    title = it.title.toString(),
+                    description = it.description.toString(),
+                    thumbnail = it.thumbnail.toString(),
                 )
             }
         }
